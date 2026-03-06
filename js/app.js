@@ -246,7 +246,7 @@ const app = {
         window.OneSignalDeferred = window.OneSignalDeferred || [];
         window.OneSignalDeferred.push(async function(OneSignal) {
             await OneSignal.init({
-                appId: "YOUR_ONESIGNAL_APP_ID", // TODO: Replace with real ID from OneSignal dashboard
+                appId: "78f5ca67-7cd6-4d5e-b521-25f6ea54e38d", 
             });
         });
 
