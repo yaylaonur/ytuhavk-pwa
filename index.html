@@ -20,6 +20,17 @@
 
     <!-- Ana Stiller -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- OneSignal SDK -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "78f5ca67-7cd6-4d5e-b521-25f6ea54e38d",
+        });
+      });
+    </script>
 </head>
 <body>
     <!-- Arka Plan Efekti (Glassmorphism için Blur Küreleri) -->
