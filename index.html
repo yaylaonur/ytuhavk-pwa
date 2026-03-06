@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>YTUHAVK | YTÜ Havacılık Kulübü</title>
+    
+    <!-- PWA Kurulumu -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <!-- Google Fonts: Modern sans-serif (Inter/Outfit) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons (CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Ana Stiller -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Arka Plan Efekti (Glassmorphism için Blur Küreleri) -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <div class="app-container">
+        
+        <!-- Üst Başlık (Header) -->
+        <header class="glass-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="assets/logo.png" alt="YTUHAVK" class="header-logo">
+                </div>
+                <!-- Bildirim İzni İsteme (Görünmez durumda başlar, JS kontrol eder) -->
+                <button id="btn-notification" class="icon-btn" aria-label="Bildirimler">
+                    <i data-lucide="bell"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- İçerik Alanı (Routing mantığı burada çalışacak) -->
+        <main id="app-content" class="content-area">
+            <!-- Dinamik JS yüklemesi yapılacak, başlangıçta loader... -->
+            <div class="loader-container">
+                <div class="spinner"></div>
+            </div>
+        </main>
+
+        <!-- Alt Gezinme Çubuğu (Bottom Navigation) -->
+        <nav class="glass-nav">
+            <button class="nav-item active" data-target="home">
+                <i data-lucide="home"></i>
+                <span>Ana Sayfa</span>
+            </button>
+            <button class="nav-item" data-target="apply">
+                <i data-lucide="clipboard-list"></i>
+                <span>Başvur</span>
+            </button>
+            <button class="nav-item header-fab" data-target="flightLog">
+                <div class="fab-inner">
+                    <i data-lucide="plane-takeoff"></i>
+                </div>
+            </button>
+            <button class="nav-item" data-target="announcements">
+                <i data-lucide="message-square"></i>
+                <span>Duyurular</span>
+            </button>
+            <button class="nav-item" data-target="profile">
+                <i data-lucide="user"></i>
+                <span>Profil</span>
+            </button>
+        </nav>
+
+    </div>
+
+    <!-- Uygulama Mantığı -->
+    <script src="js/app.js"></script>
+    
+    <!-- Service Worker Kaydı -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+</body>
+</html>
